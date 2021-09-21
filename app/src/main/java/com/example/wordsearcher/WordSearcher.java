@@ -29,6 +29,7 @@ public class WordSearcher {
 
         for (int i = 0; i < this.wordList.size(); i++) {
             currWord = this.wordList.get(i);
+
             if (currWord.startsWith(startsWith) && currWord.contains(containsExact) &&
                     doesWordContainLetters(currWord, containsLetters) && currWord.endsWith(endsWith)) {
 

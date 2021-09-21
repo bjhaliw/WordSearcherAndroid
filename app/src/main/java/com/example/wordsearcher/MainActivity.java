@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 // Don't need to do anything since the keyboard is already hidden
             }
 
+
             // Convert wordLength EditText field from String to int
             String lengthString = wordLength.getText().toString();
             int length;
@@ -60,30 +61,42 @@ public class MainActivity extends AppCompatActivity {
                 length = 0;
             }
 
-            String result = searcher.findWord(
-                    startsWith.getText().toString(),
-                    containsExact.getText().toString(),
-                    containsLetters.getText().toString(),
-                    containsOnly.getText().toString(),
-                    endsWith.getText().toString(),
-                    length);
+            if (startsWith.getText().toString().equals("")
+                    && containsExact.getText().toString().equals("")
+                    && containsLetters.getText().toString().equals("")
+                    && containsOnly.getText().toString().equals("")
+                    && endsWith.getText().toString().equals("")
+                    && wordLength.getText().toString().equals("")) {
 
-            String[] resultSplit = result.split("\n");
+                System.out.println("No input");
 
-            LinearLayout layout = new LinearLayout(this);
-            layout.setOrientation(LinearLayout.VERTICAL);
+            } else {
+                String result = searcher.findWord(
+                        startsWith.getText().toString().trim(),
+                        containsExact.getText().toString().trim(),
+                        containsLetters.getText().toString().trim(),
+                        containsOnly.getText().toString().trim(),
+                        endsWith.getText().toString().trim(),
+                        length);
 
-            for (int i = 0; i < resultSplit.length; i++) {
-                TextView textView = new TextView(this);
-                textView.setText(resultSplit[i]);
-                layout.addView(textView);
+                String[] resultSplit = result.split("\n");
+
+                LinearLayout layout = new LinearLayout(this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+
+                for (String s : resultSplit) {
+                    TextView textView = new TextView(this);
+                    textView.setText(s);
+                    layout.addView(textView);
+                }
+
+                view.removeAllViews();
+
+                view.addView(layout);
+
+                view.scrollTo(0, 0);
             }
 
-            view.removeAllViews();
-
-            view.addView(layout);
-
-            view.scrollTo(0, 0);
 
         });
 
