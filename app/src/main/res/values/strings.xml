@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Word Searcher</string>
+    <string name="word_search">Word Searcher</string>
+    <string name="contains_exact">Contains Exact:</string>
+    <string name="contains_letters">Contains Letters:</string>
+    <string name="only_contains">Only Contains:</string>
+    <string name="ends_with">Ends With:</string>
+    <string name="word_length">Word Length:</string>
+    <string name="search">Search!</string>
+    <string name="starts_with">Starts With:</string>
+
+</resources>
