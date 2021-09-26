@@ -1,12 +1,14 @@
 <resources>
     <string name="app_name">Word Searcher</string>
     <string name="word_search">Word Searcher</string>
-    <string name="contains_exact">Contains Exact:</string>
-    <string name="contains_letters">Contains Letters:</string>
+    <string name="contains_exact">Contains</string>
+    <string name="contains_letters">Enter Your Letters:</string>
     <string name="only_contains">Only Contains:</string>
-    <string name="ends_with">Ends With:</string>
-    <string name="word_length">Word Length:</string>
+    <string name="ends_with">Ends</string>
+    <string name="word_length">Length</string>
     <string name="search">Search!</string>
-    <string name="starts_with">Starts With:</string>
+    <string name="starts_with">Starts</string>
+    <string name="enter_your_letters">Enter Your Letters</string>
+    <string name="optional_fields">Optional Fields</string>
 
 </resources>

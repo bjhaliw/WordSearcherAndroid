@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"><![CDATA[
+    android:padding="5dp"><![CDATA[
 
     android:layout_width="366dp"
     android:layout_height="311dp"
@@ -15,152 +15,125 @@
     app:layout_constraintTop_toTopOf="parent"
     tools:layout_editor_absoluteX="94dp">
 
+
+
+
+
+
+
     ]]>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lettersField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lettersFieldText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="abcdefghijklmnopqrstuvwxyz"
+            android:hint="@string/enter_your_letters" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <TextView
+        android:id="@+id/optionalFieldsText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/starts_with" />
-
-        <EditText
-            android:id="@+id/startsWithTextField"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/contains_exact" />
-
-        <EditText
-            android:id="@+id/containsExactTextField"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-    </LinearLayout>
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:text="@string/optional_fields"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/contains_letters" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/startsWithField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="3dp">
 
-        <EditText
-            android:id="@+id/containsLettersTextField"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/startsWithFieldText"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/starts_with"
+                android:inputType="text"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/containsExactField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="3dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/containsExactFieldText"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/contains_exact"
+                android:inputType="text"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/endsWithField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingEnd="3dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/endsWithFieldText"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:digits="abcdefghijklmnopqrstuvwxyz"
+                android:hint="@string/ends_with"
+                android:inputType="text"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/wordLengthField"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/worldLengthFieldText"
+                android:layout_width="99dp"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:hint="@string/word_length"
+                android:inputType="text"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/only_contains" />
-
-        <EditText
-            android:id="@+id/onlyContainsTextField"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/ends_with" />
-
-        <EditText
-            android:id="@+id/endsWithTextField"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="122dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            android:gravity="end"
-            android:text="@string/word_length" />
-
-        <EditText
-            android:id="@+id/wordLengthTextField"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:importantForAutofill="no"
-            android:inputType="number"
-            android:maxLength="2" />
-
-    </LinearLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
 
     <Button
         android:id="@+id/searchButton"
