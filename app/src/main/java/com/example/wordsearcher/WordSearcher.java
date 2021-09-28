@@ -42,9 +42,6 @@ public class WordSearcher {
         this.treeMap = new TreeMap<>();
         this.sb = new StringBuilder();
 
-        System.out.println("Letters: Word Search: " + letters);
-        System.out.println("Length " + wordLength);
-
         String currWord;
 
         // Iterate through the word list
@@ -139,33 +136,13 @@ public class WordSearcher {
      */
     private void loadWordFile(InputStream stream) {
         Scanner scanner = new Scanner(stream);
-        String currWord, firstLetter, lastLetter;
+        String currWord;
 
         while (scanner.hasNextLine()) {
             currWord = scanner.nextLine();
-            firstLetter = currWord.substring(0,1);
-            lastLetter = currWord.substring(currWord.length()-1);
 
             // Add current word to overall list
             this.wordList.add(currWord);
-
-//            // Add word to Starts With map
-//            if (startsWithMap.containsKey(firstLetter)) {
-//                startsWithMap.get(firstLetter).add(currWord);
-//            } else {
-//                ArrayList<String> list = new ArrayList<>();
-//                list.add(currWord);
-//                startsWithMap.put(firstLetter, list);
-//            }
-//
-//            // Add word to Ends With map
-//            if (endsWithMap.containsKey(lastLetter)) {
-//                endsWithMap.get(lastLetter).add(currWord);
-//            } else {
-//                ArrayList<String> list = new ArrayList<>();
-//                list.add(currWord);
-//                endsWithMap.put(lastLetter, list);
-//            }
         }
 
         scanner.close();

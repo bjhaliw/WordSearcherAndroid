@@ -83,8 +83,6 @@ public class MainActivity extends AppCompatActivity {
             String[] split = searcher.getSb().toString().split("\n");
             TreeMap<Integer, ArrayList<String>> map = searcher.getTreeMap();
 
-            System.out.println(map);
-
             LinearLayout layout = new LinearLayout(this);
             layout.setOrientation(LinearLayout.VERTICAL);
 
@@ -95,13 +93,12 @@ public class MainActivity extends AppCompatActivity {
                     layout.addView(textView);
                 }
             } else {
-                System.out.println("Looking at the tree map");
+
                 for (Map.Entry<Integer, ArrayList<String>> value : map.entrySet()) {
                     TextView num = new TextView(this);
                     num.setText("Words of Length: " + value.getKey());
                     layout.addView(num);
                     for (String s : value.getValue()) {
-                        System.out.println("Curr Word: " + s);
                         TextView word = new TextView(this);
                         word.setText(s);
                         layout.addView(word);
