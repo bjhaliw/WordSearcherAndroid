@@ -3,7 +3,6 @@
     <string name="word_search">Word Searcher</string>
     <string name="contains_exact">Contains</string>
     <string name="contains_letters">Enter Your Letters:</string>
-    <string name="only_contains">Only Contains:</string>
     <string name="ends_with">Ends</string>
     <string name="word_length">Length</string>
     <string name="search">Search!</string>

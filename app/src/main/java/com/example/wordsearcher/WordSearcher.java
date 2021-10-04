@@ -1,12 +1,7 @@
 package com.example.wordsearcher;
 
-import android.content.Context;
-
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Scanner;
 import java.util.TreeMap;
 
@@ -16,20 +11,18 @@ public class WordSearcher {
 
     private TreeMap<Integer, ArrayList<String>> treeMap;
     private StringBuilder sb;
-    private HashMap<String, ArrayList<String>> startsWithMap;
-    private HashMap<String, ArrayList<String>> endsWithMap;
-    private ArrayList<String> wordList;
+    private final ArrayList<String> wordList;
+    private int numWords;
 
     public WordSearcher(InputStream stream) {
         this.wordList = new ArrayList<>();
-        this.startsWithMap = new HashMap<>();
-        this.endsWithMap = new HashMap<>();
         loadWordFile(stream);
     }
 
     /**
      * Main search function for the WordSearcher class. Loops through the entire word list if
      * the user did not supply any of the TextFields.
+     *
      * @param letters
      * @param startsWith
      * @param contains
@@ -39,8 +32,10 @@ public class WordSearcher {
     public void findWord(String letters, String startsWith, String contains,
                          String endsWith, int wordLength) {
 
+        // Initialize variables
         this.treeMap = new TreeMap<>();
         this.sb = new StringBuilder();
+        this.numWords = 0;
 
         String currWord;
 
@@ -96,11 +91,7 @@ public class WordSearcher {
             }
         }
 
-        if (counter > 0 && counter <= containsLetters.length()) {
-            return true;
-        }
-
-        return false;
+        return counter > 0 && counter <= containsLetters.length();
     }
 
 
@@ -113,18 +104,21 @@ public class WordSearcher {
      */
     private void addWordToLists(String currWord, int length) {
 
-        // User didn't specify a length, sort by length
-        if (length == 0) {
-            if (treeMap.containsKey(currWord.length())) {
-                treeMap.get(currWord.length()).add(currWord);
+        if (currWord.length() > 2) {
+            this.numWords++;
+            // User didn't specify a length, sort by length
+            if (length == 0) {
+                if (treeMap.containsKey(currWord.length())) {
+                    treeMap.get(currWord.length()).add(currWord);
+                } else {
+                    ArrayList<String> list = new ArrayList<>();
+                    list.add(currWord);
+                    treeMap.put(currWord.length(), list);
+                }
             } else {
-                ArrayList<String> list = new ArrayList<>();
-                list.add(currWord);
-                treeMap.put(currWord.length(), list);
-            }
-        } else {
-            if (currWord.length() == length) {
-                this.sb.append(currWord + "\n");
+                if (currWord.length() == length) {
+                    this.sb.append(currWord + "\n");
+                }
             }
         }
     }
@@ -154,5 +148,9 @@ public class WordSearcher {
 
     public StringBuilder getSb() {
         return sb;
+    }
+
+    public int getNumWords() {
+        return numWords;
     }
 }

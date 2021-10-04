@@ -75,12 +75,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/startsWithFieldText"
-                android:layout_width="99dp"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/starts_with"
                 android:inputType="text"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -91,12 +91,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/containsExactFieldText"
-                android:layout_width="99dp"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/contains_exact"
                 android:inputType="text"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -107,12 +107,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/endsWithFieldText"
-                android:layout_width="99dp"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:digits="abcdefghijklmnopqrstuvwxyz"
                 android:hint="@string/ends_with"
                 android:inputType="text"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -122,12 +122,12 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/worldLengthFieldText"
-                android:layout_width="99dp"
+                android:layout_width="88dp"
                 android:layout_height="wrap_content"
                 android:digits="0123456789"
                 android:hint="@string/word_length"
                 android:inputType="text"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -150,6 +150,7 @@
             android:id="@+id/scollLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical" />
     </ScrollView>
 

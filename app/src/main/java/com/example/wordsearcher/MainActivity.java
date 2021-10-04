@@ -1,19 +1,17 @@
 package com.example.wordsearcher;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.app.AppCompatActivity;
 
-import org.w3c.dom.Text;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -28,24 +26,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         // Open up the text file containing the words to search
-        InputStream stream = getResources().openRawResource(R.raw.words_alpha);
+        InputStream stream = getResources().openRawResource(R.raw.word_list);
 
         // Word Search object, will perform the word searching
         WordSearcher searcher = new WordSearcher(stream);
 
         // TextFields for user input
-        TextInputEditText letters = (TextInputEditText) findViewById(R.id.lettersFieldText);
-        TextInputEditText starts = (TextInputEditText) findViewById(R.id.startsWithFieldText);
-        TextInputEditText contains = (TextInputEditText) findViewById(R.id.containsExactFieldText);
-        TextInputEditText ends = (TextInputEditText) findViewById(R.id.endsWithFieldText);
-        TextInputEditText length = (TextInputEditText) findViewById(R.id.worldLengthFieldText);
+        TextInputEditText letters = findViewById(R.id.lettersFieldText);
+        TextInputEditText starts = findViewById(R.id.startsWithFieldText);
+        TextInputEditText contains = findViewById(R.id.containsExactFieldText);
+        TextInputEditText ends = findViewById(R.id.endsWithFieldText);
+        TextInputEditText length = findViewById(R.id.worldLengthFieldText);
 
         // Search Button to start the process
-        Button searchButton = (Button) findViewById(R.id.searchButton);
+        Button searchButton = findViewById(R.id.searchButton);
 
         // Scrollview to display the found words
-        ScrollView view = (ScrollView) findViewById(R.id.scrollView);
+        ScrollView view = findViewById(R.id.scrollView);
 
         // When Search Button is pressed, initiate search
         searchButton.setOnClickListener(e -> {
@@ -78,46 +79,59 @@ public class MainActivity extends AppCompatActivity {
 
                 searcher.findWord(letters.getText().toString(), starts.getText().toString(), contains.getText().toString(), ends.getText().toString(), numLength);
 
-            }
+                view.removeAllViews();
 
-            String[] split = searcher.getSb().toString().split("\n");
-            TreeMap<Integer, ArrayList<String>> map = searcher.getTreeMap();
+                String[] split = searcher.getSb().toString().split("\n");
+                TreeMap<Integer, ArrayList<String>> map = searcher.getTreeMap();
 
-            LinearLayout layout = new LinearLayout(this);
-            layout.setOrientation(LinearLayout.VERTICAL);
+                LinearLayout layout = new LinearLayout(this);
+                layout.setOrientation(LinearLayout.VERTICAL);
+                TextView textView = new TextView(this);
 
-            if (map.size() == 0) {
-                for (String s : split) {
-                    TextView textView = new TextView(this);
-                    textView.setText(s);
+                if (searcher.getNumWords() == 0) {
+                    textView.setText("No words found.");
                     layout.addView(textView);
-                }
-            } else {
 
-                for (Map.Entry<Integer, ArrayList<String>> value : map.entrySet()) {
-                    TextView num = new TextView(this);
-                    num.setText("Words of Length: " + value.getKey());
-                    layout.addView(num);
-                    for (String s : value.getValue()) {
-                        TextView word = new TextView(this);
-                        word.setText(s);
-                        layout.addView(word);
+                } else {
+                    if (map.size() == 0) {
+                        for (String s : split) {
+                            textView.setText(s);
+                            layout.addView(textView);
+                        }
+                    } else {
+                        for (Map.Entry<Integer, ArrayList<String>> value : map.entrySet()) {
+                            TextView num = new TextView(this);
+                            num.setText("Words of Length: " + value.getKey());
+                            layout.addView(num);
+                            for (String s : value.getValue()) {
+                                TextView word = new TextView(this);
+                                word.setText(s);
+                                layout.addView(word);
+                            }
+
+                            TextView space = new TextView(this);
+                            space.setText("\n");
+                            layout.addView(space);
+                        }
                     }
-
-                    TextView space = new TextView(this);
-                    space.setText("\n");
-                    layout.addView(space);
                 }
+                view.addView(layout);
+                view.scrollTo(0, 0);
+            } else {
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "Use the fields above to search", Snackbar.LENGTH_SHORT);
+                snackbar.show();
             }
-
-
-            view.removeAllViews();
-
-            view.addView(layout);
-
-            view.scrollTo(0, 0);
-
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
