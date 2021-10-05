@@ -1,6 +1,9 @@
 package com.example.wordsearcher;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -25,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
         // Create the view
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         // Open up the text file containing the words to search
         InputStream stream = getResources().openRawResource(R.raw.word_list);
@@ -126,9 +126,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case android.R.id.home:
+            case R.id.info_icon:
+                startActivity(new Intent(MainActivity.this, CreditsActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

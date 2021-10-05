@@ -2557,7 +2557,6 @@ asset
 assets
 asseverate
 asseveration
-asshole
 assiduous
 assiduously
 assign
@@ -4828,7 +4827,6 @@ bullets
 bullfighting
 bullfinch
 bullfrog
-bullshit
 bully
 bullying
 bulwark
@@ -12072,9 +12070,6 @@ fader
 fadge
 fado
 faeces
-fag
-faggot
-fagot
 fah
 fahrenheit
 fail
