@@ -105,9 +105,9 @@ public class WordSearcher {
     private void addWordToLists(String currWord, int length) {
 
         if (currWord.length() > 2) {
-            this.numWords++;
             // User didn't specify a length, sort by length
             if (length == 0) {
+                this.numWords++;
                 if (treeMap.containsKey(currWord.length())) {
                     treeMap.get(currWord.length()).add(currWord);
                 } else {
@@ -117,6 +117,7 @@ public class WordSearcher {
                 }
             } else {
                 if (currWord.length() == length) {
+                    this.numWords++;
                     this.sb.append(currWord + "\n");
                 }
             }

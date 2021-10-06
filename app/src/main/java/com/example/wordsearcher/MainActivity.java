@@ -94,10 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     if (map.size() == 0) {
+                        StringBuilder temp = new StringBuilder("Total number of words of length " + numLength + ": " + searcher.getNumWords() + "\n\n");
                         for (String s : split) {
-                            textView.setText(s);
-                            layout.addView(textView);
+                            temp.append(s + "\n");
                         }
+                        textView.setText(temp);
+                        layout.addView(textView);
                     } else {
                         for (Map.Entry<Integer, ArrayList<String>> value : map.entrySet()) {
                             TextView num = new TextView(this);

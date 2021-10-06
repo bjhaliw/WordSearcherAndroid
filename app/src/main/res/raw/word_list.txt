@@ -5135,7 +5135,7 @@ calumet
 calumny
 calvary
 calve
-calves              
+calves
 Calvin
 calvinist
 calyx
@@ -13225,7 +13225,7 @@ France
 franchise
 Francis
 francophone
-francs-tireurs                         
+francs-tireurs
 frangibility
 frangible
 frank
@@ -34466,7 +34466,7 @@ uses
 usher
 using
 uss
-ussr                    
+ussr
 usual
 usually
 usufruct
